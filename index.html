@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+				<meta name="theme-color" content="#111210">
+					<meta name="description" content="战团官方网站：成员名录、赛季档案与团队征程。">
+						<title>战团官网</title>
+
+						<style>
+							:root {
+							--bg: #111210;
+							--panel: #1a1b17;
+							--line: #ffffff17;
+							--text: #eeeadd;
+							--muted: #a8a797;
+							--gold: #d6b979;
+							--red: #a64739;
+							--serif: "Songti SC", SimSun, serif;
+							}
+
+							* { box-sizing: border-box; }
+
+							html {
+							scroll-behavior: smooth;
+							scroll-padding-top: 90px;
+							}
+
+							body {
+							margin: 0;
+							color: var(--text);
+							background:
+							radial-gradient(ellipse at 85% 0%, #8e71351c, transparent 40%),
+							var(--bg);
+							font: 15px/1.75 system-ui, -apple-system, "Microsoft YaHei", sans-serif;
+							}
+
+							a { color: inherit; text-decoration: none; }
+							button, input, select, textarea { font: inherit; }
+							button, select { cursor: pointer; }
+
+							button, .button {
+							display: inline-flex;
+							align-items: center;
+							justify-content: center;
+							gap: 8px;
+							padding: 10px 16px;
+							color: var(--text);
+							background: #ffffff04;
+							border: 1px solid var(--line);
+							border-radius: 5px;
+							transition: .2s;
+							}
+
+							button:hover, .button:hover {
+							color: var(--gold);
+							border-color: var(--gold);
+							}
+
+							button:disabled {
+							cursor: not-allowed;
+							opacity: .45;
+							}
+
+							.primary {
+							color: #181910;
+							background: var(--gold);
+							border-color: var(--gold);
+							}
+
+							.primary:hover {
+							color: #181910;
+							background: #e6ca90;
+							}
+
+							.danger { color: #ef9a8e; }
+							.muted { color: var(--muted); }
+							.gold { color: var(--gold); }
+
+							.wrap {
+							width: min(1160px, calc(100% - 48px));
+							margin: auto;
+							}
+
+							header {
+							position: sticky;
+							top: 0;
+							z-index: 20;
+							background: #111210ee;
+							backdrop-filter: blur(14px);
+							border-bottom: 1px solid var(--line);
+							}
+
+							.nav {
+							min-height: 76px;
+							display: flex;
+							align-items: center;
+							gap: 18px;
+							}
+
+							.brand {
+							display: flex;
+							align-items: center;
+							gap: 12px;
+							margin-right: auto;
+							white-space: nowrap;
+							}
+
+							.seal {
+							display: grid;
+							place-items: center;
+							width: 38px;
+							height: 42px;
+							color: #f6e4bf;
+							background: var(--red);
+							border: 1px solid #e7a49466;
+							font: 23px var(--serif);
+							}
+
+							.brand strong { letter-spacing: 3px; }
+
+							.navlinks {
+							display: flex;
+							gap: 24px;
+							color: var(--muted);
+							font-size: 13px;
+							}
+
+							.nav-actions {
+							display: flex;
+							gap: 8px;
+							}
+
+							.nav-actions button {
+							padding: 8px 11px;
+							font-size: 12px;
+							}
+
+							.hero {
+							min-height: 650px;
+							display: grid;
+							grid-template-columns: 1.25fr 1fr;
+							align-items: center;
+							gap: 50px;
+							padding: 80px 0 60px;
+							}
+
+							.eyebrow {
+							color: var(--gold);
+							font-size: 11px;
+							letter-spacing: 3px;
+							}
+
+							.hero h1 {
+							margin: 18px 0 12px;
+							font: 500 clamp(58px, 8vw, 104px)/1.25 var(--serif);
+							letter-spacing: .12em;
+							overflow-wrap: anywhere;
+							}
+
+							.hero h2 {
+							font: 400 23px/1.7 var(--serif);
+							letter-spacing: 4px;
+							}
+
+							.hero p {
+							max-width: 490px;
+							color: var(--muted);
+							white-space: pre-line;
+							}
+
+							.hero-actions {
+							display: flex;
+							flex-wrap: wrap;
+							gap: 12px;
+							margin-top: 28px;
+							}
+
+							.emblem {
+							position: relative;
+							display: grid;
+							place-items: center;
+							width: min(100%, 390px);
+							aspect-ratio: 1;
+							margin: auto;
+							border: 1px solid #d6b97935;
+							border-radius: 50%;
+							background: radial-gradient(circle, #b18b3720, transparent 66%);
+							}
+
+							.emblem::before,
+							.emblem::after {
+							content: "";
+							position: absolute;
+							inset: 22px;
+							border: 1px solid #d6b97925;
+							border-radius: 50%;
+							}
+
+							.emblem::after {
+							inset: 54px;
+							border-style: dashed;
+							}
+
+							.emblem-inner {
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							justify-content: center;
+							width: 57%;
+							height: 67%;
+							color: #191b14;
+							background: linear-gradient(145deg, #c5a367, #776036 55%, #d6b979);
+							clip-path: polygon(
+							50% 0, 96% 20%, 88% 74%,
+							50% 100%, 12% 74%, 4% 20%
+							);
+							}
+
+							.emblem-inner b { font: 90px var(--serif); }
+							.emblem-inner span { font-size: 10px; letter-spacing: 4px; }
+
+							.hero-note {
+							margin-top: 24px;
+							color: var(--muted);
+							text-align: center;
+							font-size: 11px;
+							letter-spacing: 4px;
+							}
+
+							.stats {
+							display: grid;
+							grid-template-columns: repeat(4, 1fr);
+							border: 1px solid var(--line);
+							}
+
+							.stat {
+							padding: 25px;
+							border-right: 1px solid var(--line);
+							}
+
+							.stat:last-child { border-right: 0; }
+
+							.stat b {
+							display: block;
+							color: var(--gold);
+							font: 31px/1.5 Georgia, serif;
+							}
+
+							.stat span {
+							color: var(--muted);
+							font-size: 12px;
+							}
+
+							section { padding: 78px 0 4px; }
+
+							.section-head {
+							display: flex;
+							align-items: end;
+							justify-content: space-between;
+							gap: 20px;
+							margin-bottom: 28px;
+							}
+
+							.section-head h2 {
+							margin: 9px 0 0;
+							font: 33px/1.5 var(--serif);
+							letter-spacing: 3px;
+							}
+
+							.section-head p {
+							margin: 0;
+							color: var(--muted);
+							font-size: 13px;
+							}
+
+							.about {
+							display: grid;
+							grid-template-columns: 1fr 2fr;
+							gap: 45px;
+							padding: 36px;
+							background: var(--panel);
+							border: 1px solid var(--line);
+							}
+
+							.about-title {
+							color: var(--gold);
+							white-space: pre-line;
+							font: 28px/1.8 var(--serif);
+							}
+
+							.prose {
+							margin: 0;
+							color: var(--muted);
+							white-space: pre-line;
+							overflow-wrap: anywhere;
+							}
+
+							.history {
+							display: grid;
+							grid-template-columns: repeat(3, 1fr);
+							gap: 18px;
+							}
+
+							.chapter {
+							padding: 28px;
+							background: var(--panel);
+							border: 1px solid var(--line);
+							}
+
+							.chapter .number {
+							color: #d6b97966;
+							font: 45px Georgia, serif;
+							}
+
+							.chapter h3 {
+							margin: 18px 0 12px;
+							font: 22px var(--serif);
+							}
+
+							.chapter p { font-size: 14px; }
+
+							.core-grid {
+							display: grid;
+							grid-template-columns: repeat(4, 1fr);
+							gap: 16px;
+							}
+
+							.core-card {
+							padding: 28px 20px;
+							text-align: center;
+							background: var(--panel);
+							border: 1px solid var(--line);
+							}
+
+							.avatar {
+							display: grid;
+							place-items: center;
+							width: 76px;
+							height: 76px;
+							margin: 0 auto 18px;
+							color: var(--gold);
+							background: linear-gradient(135deg, #77613955, #22251d);
+							border: 1px solid #d6b97950;
+							border-radius: 50%;
+							font: 30px var(--serif);
+							}
+
+							.core-card h3 { margin: 0 0 10px; font-size: 16px; }
+
+							.tag {
+							padding: 3px 8px;
+							color: var(--gold);
+							border: 1px solid #d6b97935;
+							font-size: 11px;
+							}
+
+							.core-card p {
+							margin-bottom: 0;
+							color: var(--muted);
+							font-size: 12px;
+							overflow-wrap: anywhere;
+							}
+
+							.toolbar {
+							display: flex;
+							flex-wrap: wrap;
+							gap: 12px;
+							margin-bottom: 18px;
+							}
+
+							input, select, textarea {
+							width: 100%;
+							min-width: 0;
+							padding: 11px 12px;
+							color: var(--text);
+							background: #121310;
+							border: 1px solid #ffffff25;
+							border-radius: 4px;
+							outline: none;
+							}
+
+							input:focus, select:focus, textarea:focus {
+							border-color: var(--gold);
+							}
+
+							.toolbar input { flex: 1; min-width: 180px; }
+							.toolbar select { width: auto; }
+
+							.table-wrap {
+							overflow: auto;
+							border: 1px solid var(--line);
+							}
+
+							table {
+							width: 100%;
+							border-collapse: collapse;
+							white-space: nowrap;
+							text-align: left;
+							}
+
+							th {
+							padding: 15px 20px;
+							color: var(--muted);
+							background: #ffffff03;
+							font-size: 12px;
+							font-weight: 400;
+							}
+
+							td {
+							padding: 18px 20px;
+							border-top: 1px solid var(--line);
+							font-size: 14px;
+							}
+
+							td:first-child {
+							color: var(--gold);
+							font: 17px Georgia, serif;
+							}
+
+							.row-actions { display: flex; gap: 7px; }
+
+							.row-actions button {
+							padding: 4px 10px;
+							font-size: 12px;
+							}
+
+							.empty {
+							padding: 40px;
+							color: var(--muted);
+							text-align: center;
+							}
+
+							.recruit {
+							display: grid;
+							grid-template-columns: 1.3fr 1fr;
+							gap: 35px;
+							padding: 40px;
+							background: linear-gradient(110deg, #a6873e16, #191a17);
+							border: 1px solid #d6b97935;
+							}
+
+							.recruit h3 {
+							margin: 10px 0 20px;
+							font: 29px/1.6 var(--serif);
+							}
+
+							.contact {
+							padding-left: 30px;
+							border-left: 1px solid #d6b97925;
+							}
+
+							footer {
+							padding: 55px 0 120px;
+							color: var(--muted);
+							text-align: center;
+							font-size: 12px;
+							}
+
+							.player {
+							position: fixed;
+							left: 50%;
+							bottom: 18px;
+							z-index: 30;
+							display: flex;
+							align-items: center;
+							gap: 13px;
+							width: min(620px, calc(100% - 24px));
+							padding: 12px 15px;
+							background: #20211df5;
+							border: 1px solid #d6b97940;
+							border-radius: 9px;
+							backdrop-filter: blur(14px);
+							transform: translateX(-50%);
+							box-shadow: 0 8px 40px #0008;
+							}
+
+							.play-button {
+							flex-shrink: 0;
+							width: 40px;
+							height: 40px;
+							padding: 0;
+							color: var(--gold);
+							}
+
+							.track-info { flex: 1; min-width: 0; }
+
+							.track-info strong {
+							display: block;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+							font-size: 13px;
+							}
+
+							.track-info small {
+							display: block;
+							color: var(--muted);
+							font-size: 10px;
+							}
+
+							.player input[type="range"] {
+							width: 70px;
+							padding: 0;
+							accent-color: var(--gold);
+							}
+
+							dialog {
+							width: min(700px, calc(100% - 28px));
+							max-height: 88vh;
+							padding: 0;
+							color: var(--text);
+							background: var(--panel);
+							border: 1px solid #d6b97950;
+							border-radius: 9px;
+							}
+
+							dialog::backdrop {
+							background: #000b;
+							backdrop-filter: blur(5px);
+							}
+
+							.dialog-head {
+							display: flex;
+							align-items: center;
+							justify-content: space-between;
+							padding: 20px 24px;
+							border-bottom: 1px solid var(--line);
+							}
+
+							.dialog-head h3 {
+							margin: 0;
+							font: 23px var(--serif);
+							}
+
+							.dialog-body { padding: 24px; }
+
+							.field {
+							display: block;
+							margin-bottom: 17px;
+							}
+
+							.field > span {
+							display: block;
+							margin-bottom: 7px;
+							color: var(--muted);
+							font-size: 12px;
+							}
+
+							textarea {
+							min-height: 100px;
+							resize: vertical;
+							}
+
+							.form-grid {
+							display: grid;
+							grid-template-columns: 1fr 1fr;
+							gap: 0 18px;
+							}
+
+							.form-actions {
+							display: flex;
+							flex-wrap: wrap;
+							justify-content: flex-end;
+							gap: 10px;
+							padding-top: 12px;
+							}
+
+							.divider {
+							margin: 24px 0;
+							border: 0;
+							border-top: 1px solid var(--line);
+							}
+
+							.notice {
+							color: var(--muted);
+							font-size: 12px;
+							}
+
+							.status-banner {
+							margin-top: 20px;
+							padding: 14px 18px;
+							color: #e6cc95;
+							background: #d6b97910;
+							border: 1px solid #d6b97935;
+							white-space: pre-line;
+							}
+
+							#toast {
+							position: fixed;
+							top: 90px;
+							left: 50%;
+							z-index: 100;
+							width: max-content;
+							max-width: calc(100% - 30px);
+							padding: 12px 22px;
+							color: #171810;
+							background: #e0c48a;
+							border-radius: 5px;
+							transform: translateX(-50%);
+							box-shadow: 0 6px 30px #0006;
+							}
+
+							body.busy { cursor: progress; }
+							[hidden] { display: none !important; }
+
+							@media (max-width: 800px) {
+							.wrap { width: calc(100% - 32px); }
+							.nav { min-height: 65px; gap: 10px; }
+							.navlinks { display: none; }
+							.hero {
+							grid-template-columns: 1fr;
+							gap: 35px;
+							padding: 55px 0 35px;
+							}
+							.hero h1 { font-size: 68px; }
+							.emblem { width: 250px; }
+							.emblem-inner b { font-size: 60px; }
+							.stats { grid-template-columns: 1fr 1fr; }
+							.stat {
+							padding: 20px;
+							border-bottom: 1px solid var(--line);
+							}
+							.stat:nth-child(2) { border-right: 0; }
+							.stat:nth-child(n+3) { border-bottom: 0; }
+							section { padding-top: 58px; }
+							.section-head {
+							align-items: start;
+							flex-direction: column;
+							gap: 10px;
+							}
+							.about, .recruit {
+							grid-template-columns: 1fr;
+							gap: 22px;
+							padding: 25px;
+							}
+							.history { grid-template-columns: 1fr; }
+							.core-grid { grid-template-columns: repeat(2, 1fr); }
+							.contact {
+							padding: 20px 0 0;
+							border-left: 0;
+							border-top: 1px solid #d6b97925;
+							}
+							.toolbar select { flex: 1; }
+							}
+
+							@media (max-width: 440px) {
+							.brand strong { font-size: 14px; letter-spacing: 1px; }
+							.nav-actions { gap: 4px; }
+							.nav-actions button { padding: 7px; font-size: 11px; }
+							.form-grid { grid-template-columns: 1fr; }
+							.player input[type="range"] { width: 48px; }
+							}
+
+							@media (prefers-reduced-motion: reduce) {
+							html { scroll-behavior: auto; }
+							* { transition: none !important; }
+							}
+						</style>
+					</head>
+
+	<body>
+		<header>
+			<nav class="wrap nav" aria-label="主导航">
+				<a class="brand" href="#home">
+					<span class="seal" id="navSeal">山</span>
+					<strong data-text="name">山河</strong>
+				</a>
+
+				<div class="navlinks">
+					<a href="#about">关于战团</a>
+					<a href="#history">战团史册</a>
+					<a href="#roster">成员名录</a>
+					<a href="#contact">加入我们</a>
+				</div>
+
+				<div class="nav-actions">
+					<button id="loginButton" disabled="">管理员登录</button>
+					<button id="manageButton" hidden="">管理网站</button>
+					<button id="logoutButton" hidden="">退出</button>
+				</div>
+			</nav>
+		</header>
+
+		<div class="wrap">
+			<div id="statusBanner" class="status-banner" role="status">
+				正在连接网站数据库……
+			</div>
+		</div>
+
+		<main class="wrap" id="siteMain" hidden="">
+			<div class="hero" id="home">
+				<div>
+					<div class="eyebrow" data-text="eyebrow"></div>
+					<h1 data-text="name"></h1>
+					<h2 data-text="slogan"></h2>
+					<p data-text="intro"></p>
+
+					<div class="hero-actions">
+						<a class="button primary" href="#roster">查看成员名录 ↗</a>
+						<a class="button" href="#contact">与我们并肩 →</a>
+					</div>
+				</div>
+
+				<div>
+					<div class="emblem" aria-label="战团徽章">
+						<div class="emblem-inner">
+							<b id="emblemText">山</b>
+							<span>TEAM · GLORY</span>
+						</div>
+					</div>
+					<div class="hero-note" data-text="heroNote"></div>
+				</div>
+			</div>
+
+			<div class="stats">
+				<div class="stat">
+					<b id="memberCount">0</b>
+					<span>当前赛季成员</span>
+				</div>
+				<div class="stat">
+					<b data-text="season"></b>
+					<span>当前征战赛季</span>
+				</div>
+				<div class="stat">
+					<b id="totalMerit">0</b>
+					<span>团队累计武勋 / 万</span>
+				</div>
+				<div class="stat">
+					<b id="coreCount">0</b>
+					<span>当前赛季核心成员</span>
+				</div>
+			</div>
+
+			<section id="about">
+				<div class="section-head">
+					<div>
+						<div class="eyebrow">壹 / 01 · ABOUT US</div>
+						<h2 data-text="aboutHeading"></h2>
+					</div>
+					<p data-text="aboutCaption"></p>
+				</div>
+
+				<div class="about">
+					<div class="about-title" data-text="aboutTitle"></div>
+					<p class="prose" data-text="about"></p>
+				</div>
+			</section>
+
+			<section id="history">
+				<div class="section-head">
+					<div>
+						<div class="eyebrow">贰 / 02 · BATTLE CHRONICLE</div>
+						<h2 data-text="historyHeading"></h2>
+					</div>
+					<p data-text="historyCaption"></p>
+				</div>
+				<div class="history" id="historyGrid"></div>
+			</section>
+
+			<section id="core">
+				<div class="section-head">
+					<div>
+						<div class="eyebrow">叁 / 03 · CORE MEMBERS</div>
+						<h2 data-text="coreHeading"></h2>
+					</div>
+					<p id="coreCaption"></p>
+				</div>
+				<div class="core-grid" id="coreGrid"></div>
+			</section>
+
+			<section id="roster">
+				<div class="section-head">
+					<div>
+						<div class="eyebrow">肆 / 04 · SEASON ROSTER</div>
+						<h2 data-text="rosterHeading"></h2>
+					</div>
+					<button class="primary" id="addMemberButton" hidden="">
+						＋ 添加成员
+					</button>
+				</div>
+
+				<div class="toolbar">
+					<input
+					  id="searchInput"
+					  type="search"
+					  placeholder="搜索名称、职位或标签"
+					  aria-label="搜索成员"
+        >
+
+						<select id="seasonFilter" aria-label="筛选赛季"></select>
+
+						<select id="sortSelect" aria-label="成员排序">
+							<option value="merit">按武勋排序</option>
+							<option value="name">按名称排序</option>
+							<option value="role">团长 / 核心优先</option>
+						</select>
+					</div>
+
+				<div class="table-wrap">
+					<table>
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th>成员</th>
+								<th>职位</th>
+								<th>赛季</th>
+								<th>武勋</th>
+								<th>标签</th>
+								<th id="actionsHeading" hidden="">操作</th>
+							</tr>
+						</thead>
+						<tbody id="memberRows"></tbody>
+					</table>
+					<div class="empty" id="emptyState" hidden="">
+						没有找到符合条件的成员。
+					</div>
+				</div>
+
+				<p class="notice" id="rosterSummary"></p>
+			</section>
+
+			<section id="contact">
+				<div class="recruit">
+					<div>
+						<div class="eyebrow">RECRUITMENT ORDER</div>
+						<h3 data-text="recruitTitle"></h3>
+						<p class="prose" data-text="recruit"></p>
+					</div>
+
+					<div class="contact">
+						<div class="eyebrow">CONTACT US</div>
+						<p class="prose" data-text="contact"></p>
+						<p class="notice" data-text="contactNote"></p>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="wrap">
+			<div data-text="footer"></div>
+			<div id="updatedAt"></div>
+		</footer>
+
+		<div class="player" aria-label="背景音乐播放器">
+			<button
+			  class="play-button"
+			  id="playButton"
+			  aria-label="播放音乐"
+			  disabled=""
+    >▶</button>
+
+			<div class="track-info">
+				<strong id="trackTitle">尚未设置背景音乐</strong>
+				<small id="trackStatus" aria-live="polite">
+					音乐需要手动点击播放
+				</small>
+			</div>
+
+			<input
+			  type="range"
+			  id="volume"
+			  min="0"
+			  max="1"
+			  step="0.05"
+			  value="0.5"
+			  aria-label="音量"
+    >
+
+				<button id="musicSettings" hidden="">♫ 设置</button>
+			</div>
+
+		<audio id="audio" loop="" preload="none"></audio>
+
+		<dialog id="loginDialog">
+			<div class="dialog-head">
+				<h3>管理员登录</h3>
+				<button type="button" data-close="loginDialog" aria-label="关闭">✕</button>
+			</div>
+
+			<form class="dialog-body" id="loginForm">
+				<label class="field">
+					<span>邮箱</span>
+					<input name="email" type="email" required="" autocomplete="username">
+      </label>
+
+				<label class="field">
+					<span>密码</span>
+					<input
+					  name="password"
+					  type="password"
+					  required=""
+					  autocomplete="current-password"
+        >
+					</label>
+
+				<p class="danger" id="loginError" role="alert"></p>
+
+				<div class="form-actions">
+					<button class="primary" type="submit">登录</button>
+				</div>
+			</form>
+		</dialog>
+
+		<dialog id="settingsDialog">
+			<div class="dialog-head">
+				<h3>网站管理</h3>
+				<button type="button" data-close="settingsDialog" aria-label="关闭">✕</button>
+			</div>
+
+			<div class="dialog-body">
+				<p class="notice">
+					点击“保存并发布”后，内容写入数据库；访客刷新即可看到。
+				</p>
+
+				<form id="settingsForm">
+					<div id="textFields"></div>
+
+					<hr class="divider">
+						<div class="gold">背景音乐</div>
+
+						<label class="field">
+							<span>音乐名称</span>
+							<input name="musicTitle" maxlength="120">
+        </label>
+
+						<label class="field">
+							<span>音乐直链（HTTPS，可留空）</span>
+							<input name="musicUrl" type="url" placeholder="填写音频文件直链">
+        </label>
+
+						<label class="field">
+							<span>上传音乐：MP3 / WAV / OGG / M4A，最大 20MB</span>
+							<input
+							  name="musicFile"
+							  type="file"
+							  accept=".mp3,.wav,.ogg,.m4a"
+          >
+							</label>
+
+						<p class="notice">
+							选择文件后，保存时会上传到云端，并替换音乐直链。
+							清空直链且不选择文件，可移除背景音乐。
+							旧音频文件保留在存储桶中，可在控制台清理。
+						</p>
+
+						<div class="form-actions">
+							<button class="primary" type="submit">保存并发布</button>
+						</div>
+					</form>
+
+				<hr class="divider">
+					<div class="gold">备份与同步</div>
+
+					<p class="notice">
+						JSON 备份包含文案、成员和音乐地址，不包含音频文件本身。
+						导入会替换当前网站资料。读取最新数据会放弃未提交的编辑。
+					</p>
+
+					<div class="toolbar">
+						<button id="exportButton">导出备份</button>
+						<button id="importButton">导入并发布</button>
+						<button id="reloadButton">读取最新数据</button>
+					</div>
+
+					<input
+					  id="importFile"
+					  type="file"
+					  accept=".json,application/json"
+					  hidden=""
+      >
+					</div>
+		</dialog>
+
+		<dialog id="memberDialog">
+			<div class="dialog-head">
+				<h3 id="memberDialogTitle">添加成员</h3>
+				<button type="button" data-close="memberDialog" aria-label="关闭">✕</button>
+			</div>
+
+			<form class="dialog-body" id="memberForm">
+				<input name="id" type="hidden">
+
+					<label class="field">
+						<span>成员名称 *</span>
+						<input name="name" required="" maxlength="40">
+      </label>
+
+					<div class="form-grid">
+						<label class="field">
+							<span>职位</span>
+							<select name="role">
+								<option>团员</option>
+								<option>核心成员</option>
+								<option>团长</option>
+								<option>副团长</option>
+								<option>金主</option>
+							</select>
+						</label>
+
+						<label class="field">
+							<span>所属赛季 *</span>
+							<input name="season" required="" maxlength="20">
+        </label>
+
+						<label class="field">
+							<span>武勋</span>
+							<input
+							  name="merit"
+							  type="number"
+							  required=""
+							  min="0"
+							  max="999999999999"
+							  step="1"
+							  value="0"
+          >
+							</label>
+
+						<label class="field">
+							<span>标签</span>
+							<input name="tag" maxlength="50">
+        </label>
+					</div>
+
+					<label class="field">
+						<span>成员寄语</span>
+						<textarea name="note" maxlength="300"></textarea>
+					</label>
+
+					<label class="field">
+						<span>
+							<input name="core" type="checkbox" style="width:auto">
+          在当前赛季核心成员区域展示
+        </span>
+					</label>
+
+					<div class="form-actions">
+						<button type="button" data-close="memberDialog">取消</button>
+						<button class="primary" type="submit">保存成员</button>
+					</div>
+				</form>
+		</dialog>
+
+		<div id="toast" role="status" hidden=""></div>
+
+		<script src="./config.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+		<script>
+			"use strict";
+
+			const $ = selector => document.querySelector(selector);
+
+			const uid = () =>
+			globalThis.crypto?.randomUUID?.() ||
+			Date.now().toString(36) + Math.random().toString(36).slice(2);
+
+			const escapeHTML = value => String(value).replace(
+			/[&<>"']/g,
+			char => ({
+			"&": "&amp;",
+			"<": "&lt;",
+			">": "&gt;",
+			'"': "&quot;",
+			"'": "&#39;"
+			}[char])
+			);
+
+			const clone = value => JSON.parse(JSON.stringify(value));
+
+			const ROLES = ["团员", "核心成员", "团长", "副团长", "金主"];
+
+			// key、显示名称、是否多行
+			const FIELDS = [
+			["name", "战团名称", false],
+			["eyebrow", "首页顶部说明", false],
+			["season", "当前赛季（需与成员所属赛季一致）", false],
+			["slogan", "首页标语", false],
+			["intro", "首页介绍", true],
+			["heroNote", "徽章下方文字", false],
+			["aboutHeading", "关于战团 · 栏目名称", false],
+			["aboutCaption", "关于战团 · 栏目说明", false],
+			["aboutTitle", "关于战团 · 内容标题", true],
+			["about", "关于战团 · 正文", true],
+			["historyHeading", "史册 · 栏目名称", false],
+			["historyCaption", "史册 · 栏目说明", false],
+			["history", "史册内容（每行：标题 | 正文）", true],
+			["coreHeading", "核心成员 · 栏目名称", false],
+			["rosterHeading", "名录 · 栏目名称", false],
+			["recruitTitle", "招募标题", false],
+			["recruit", "招募说明", true],
+			["contact", "联系方式（公开展示）", true],
+			["contactNote", "联系方式下方说明", false],
+			["footer", "页脚文字", false]
+			];
+
+			const DEFAULTS = {
+			config: {
+			name: "山河",
+			eyebrow: "三国：谋定天下 · 玩家战团",
+			season: "S17",
+			slogan: "以谋定局 · 以战立名",
+			intro: "山河为局，群雄为棋。\n聚同道之锋，赴每一场并肩之约。",
+			heroNote: "以同袍之名 · 赴山河之约",
+			aboutHeading: "聚同道，共山河",
+			aboutCaption: "每一次集结，皆有回应。",
+			aboutTitle: "聚同道之志\n谋天下之局",
+			about: "我们因热爱相聚，因信任同行。\n\n以执行为刃，以默契为甲。每一次集结都有回应，每一段征途都值得铭记。\n\n不问来时路，只问是否愿意并肩。",
+			historyHeading: "战团史册",
+			historyCaption: "山河为卷，征途作墨。",
+			history: "初立战旗 | 从第一次集结开始，我们有了共同的名字。\n并肩征战 | 汇聚同道，以默契和执行迎接每一场战斗。\n再赴山河 | 战旗不落，征途未尽。下一章，由每位同袍共同书写。",
+			coreHeading: "核心成员",
+			rosterHeading: "成员名录",
+			recruitTitle: "同道者，共赴新局",
+			recruit: "招募状态：开放招募\n入团要求：稳定活跃、服从指挥、尊重同袍\n招募名额：根据赛季实际情况调整",
+			contact: "微信：请在管理面板填写\nQQ：请在管理面板填写\n申请备注：游戏昵称 + 当前赛季",
+			contactNote: "期待下一次出征，身旁有你。",
+			footer: "山河战团 · 同道相逢，以诚相待",
+			musicTitle: "战团背景音乐",
+			musicUrl: ""
+			},
+
+			members: [
+			{
+			name: "山河丨长风",
+			role: "团长",
+			merit: 9850000,
+			tag: "统筹指挥",
+			core: true
+			},
+			{
+			name: "山河丨听雨",
+			role: "副团长",
+			merit: 8920000,
+			tag: "并肩同行",
+			core: true
+			},
+			{
+			name: "山河丨青锋",
+			role: "核心成员",
+			merit: 7650000,
+			tag: "攻城先锋",
+			core: true
+			},
+			{
+			name: "山河丨临川",
+			role: "核心成员",
+			merit: 6810000,
+			tag: "中军砥柱",
+			core: true
+			},
+			{
+			name: "山河丨逐月",
+			role: "团员",
+			merit: 5320000,
+			tag: "一往无前",
+			core: false
+			},
+			{
+			name: "山河丨知秋",
+			role: "团员",
+			merit: 4280000,
+			tag: "运筹帷幄",
+			core: false
+			}
+			].map(member => ({
+			...member,
+			id: uid(),
+			season: "S17",
+			note: "愿此心不改，愿同袍皆安。"
+			}))
+			};
+
+			let sb = null;
+			let data = clone(DEFAULTS);
+			let siteVersion = 1;
+			let updatedAt = "";
+			let initialized = false;
+			let ready = false;
+			let isAdmin = false;
+			let hasSession = false;
+			let busy = false;
+			let filterSeason = data.config.season;
+			let toastTimer;
+			let authGeneration = 0;
+
+			const audio = $("#audio");
+			audio.volume = 0.5;
+
+			function toast(message) {
+			$("#toast").textContent = message;
+			$("#toast").hidden = false;
+
+			clearTimeout(toastTimer);
+			toastTimer = setTimeout(() => {
+			$("#toast").hidden = true;
+			}, 5500);
+			}
+
+			function setBanner(message) {
+			$("#statusBanner").textContent = message;
+			$("#statusBanner").hidden = !message;
+			}
+
+			function validMusicUrl(value) {
+			if (!value) return true;
+
+			try {
+			return new URL(value).protocol === "https:";
+			} catch {
+			return false;
+			}
+			}
+
+			function validateData(raw) {
+			if (
+			!raw ||
+			typeof raw !== "object" ||
+			!raw.config ||
+			typeof raw.config !== "object" ||
+			!Array.isArray(raw.members) ||
+			raw.members.length > 10000
+			) {
+			throw new Error("网站资料格式不正确，或成员数量超过限制");
+			}
+
+			const config = {};
+
+			for (const key of Object.keys(DEFAULTS.config)) {
+			const value = raw.config[key] ?? DEFAULTS.config[key];
+
+			if (typeof value !== "string" || value.length > 20000) {
+			throw new Error("文案格式不正确或内容过长");
+			}
+
+			config[key] = value;
+			}
+
+			config.name = config.name.trim();
+			config.season = config.season.trim();
+			config.musicUrl = config.musicUrl.trim();
+
+			if (!config.name || !config.season) {
+			throw new Error("战团名称和当前赛季不能为空");
+			}
+
+			if (!validMusicUrl(config.musicUrl)) {
+			throw new Error("音乐地址必须是 HTTPS 音频直链");
+			}
+
+			const ids = new Set();
+
+			const members = raw.members.map(item => {
+			if (
+			!item ||
+			typeof item.name !== "string" ||
+			!item.name.trim() ||
+			item.name.length > 40 ||
+			!ROLES.includes(item.role) ||
+			typeof item.season !== "string" ||
+			!item.season.trim() ||
+			item.season.length > 20 ||
+			!Number.isSafeInteger(item.merit) ||
+			item.merit < 0 ||
+          item.merit > 999999999999 ||
+          typeof item.tag !== "string" ||
+          item.tag.length > 50 ||
+          typeof item.note !== "string" ||
+          item.note.length > 300 ||
+          typeof item.core !== "boolean"
+        ) {
+          throw new Error("成员数据存在无效字段");
+        }
+
+        let id = (
+          typeof item.id === "string" &&
+			item.id.length > 0 &&
+			item.id.length <= 100
+			) ? item.id : uid();
+
+			if (ids.has(id)) id = uid();
+			ids.add(id);
+
+			return {
+			id,
+			name: item.name.trim(),
+			role: item.role,
+			season: item.season.trim(),
+			merit: item.merit,
+			tag: item.tag,
+			note: item.note,
+			core: item.core
+			};
+			});
+
+			return { config, members };
+			}
+
+			function syncControls() {
+			$("#loginButton").hidden = isAdmin;
+			$("#loginButton").disabled = !ready || busy;
+			$("#manageButton").hidden = !isAdmin;
+			$("#logoutButton").hidden = !hasSession;
+			$("#addMemberButton").hidden = !isAdmin;
+			$("#musicSettings").hidden = !isAdmin;
+			$("#actionsHeading").hidden = !isAdmin;
+
+			const selectors = [
+			".nav-actions button",
+			"#addMemberButton",
+			"#musicSettings",
+			"#settingsDialog button",
+			"#settingsDialog input",
+			"#settingsDialog textarea",
+			"#memberDialog button",
+			"#memberDialog input",
+			"#memberDialog select",
+			"#memberDialog textarea",
+			"#loginDialog button",
+			"#loginDialog input",
+			".row-actions button"
+			].join(",");
+
+			document.querySelectorAll(selectors).forEach(element => {
+			element.disabled = busy;
+			});
+
+			$("#loginButton").disabled = !ready || busy;
+
+			document.body.classList.toggle("busy", busy);
+			}
+
+			async function runBusy(task) {
+			if (busy) return;
+
+			busy = true;
+			syncControls();
+
+			try {
+			await task();
+			} catch (error) {
+			console.error(error);
+			toast(error.message || "操作失败，请重试");
+			} finally {
+			busy = false;
+			syncControls();
+			}
+			}
+
+			function requireAdmin() {
+			if (!ready) throw new Error("网站尚未完成加载");
+			if (!isAdmin) throw new Error("请先使用管理员账号登录");
+			}
+
+			function render() {
+			document.title = `${data.config.name}战团 · 谋定天下`;
+
+			document.querySelectorAll("[data-text]").forEach(element => {
+			element.textContent = data.config[element.dataset.text] || "";
+			});
+
+			const initial = Array.from(data.config.name)[0] || "战";
+
+			$("#navSeal").textContent = initial;
+			$("#emblemText").textContent = initial;
+
+			const current = data.members.filter(member =>
+			member.season === data.config.season
+			);
+
+			$("#memberCount").textContent = current.length;
+
+			$("#totalMerit").textContent = (
+			current.reduce((sum, member) => sum + member.merit, 0) / 10000
+			).toLocaleString("zh-CN", {
+			maximumFractionDigits: 1
+			});
+
+			$("#coreCount").textContent =
+			current.filter(member => member.core).length;
+
+			const chapters = data.config.history
+			.split("\n")
+			.filter(line => line.trim());
+
+			$("#historyGrid").innerHTML = chapters.map((line, index) => {
+			const split = line.indexOf("|");
+			const title = split < 0 ? line : line.slice(0, split);
+        const text = split < 0 ? "" : line.slice(split + 1);
+
+        return `
+          <article class="chapter">
+				<div class="number">
+					${String(index + 1).padStart(2, "0")}
+				</div>
+				<h3>${escapeHTML(title.trim())}</h3>
+				<p class="prose">${escapeHTML(text.trim())}</p>
+			</article>
+			`;
+			}).join("");
+
+			const core = current.filter(member => member.core);
+
+			$("#coreCaption").textContent =
+			`${data.config.season} · ${core.length} 位同袍`;
+
+			$("#coreGrid").innerHTML = core.length
+			? core.map(member => {
+			const shortName = member.name.split("丨").pop();
+
+			return `
+			<article class="core-card">
+				<div class="avatar">
+					${escapeHTML(Array.from(shortName)[0] || "将")}
+				</div>
+				<h3>${escapeHTML(member.name)}</h3>
+				<span class="tag">${escapeHTML(member.role)}</span>
+				<p>
+					${escapeHTML(
+					member.note || member.tag || "与同袍并肩"
+					)}
+				</p>
+			</article>
+			`;
+			}).join("")
+			: '<div class="empty">当前赛季暂无核心成员。</div>';
+
+			const seasons = [...new Set([
+			data.config.season,
+			...data.members.map(member => member.season)
+			])].sort((a, b) =>
+			b.localeCompare(a, "zh-CN", { numeric: true })
+			);
+
+			if (filterSeason !== "*" && !seasons.includes(filterSeason)) {
+			filterSeason = data.config.season;
+			}
+
+			$("#seasonFilter").innerHTML =
+			'<option value="*">全部赛季</option>' +
+			seasons.map(season => `
+			<option value="${escapeHTML(season)}">
+				${escapeHTML(season)} 赛季
+			</option>
+			`).join("");
+
+			$("#seasonFilter").value = filterSeason;
+
+			$("#updatedAt").textContent = updatedAt
+			? "资料更新于 " + new Date(updatedAt).toLocaleString("zh-CN")
+			: "演示资料 · 尚未发布";
+
+			renderMembers();
+			syncControls();
+			}
+
+			function renderMembers() {
+			const query = $("#searchInput").value.trim().toLocaleLowerCase();
+
+			const members = data.members.filter(member =>
+			(filterSeason === "*" || member.season === filterSeason) &&
+			[member.name, member.role, member.tag].some(text =>
+			text.toLocaleLowerCase().includes(query)
+			)
+			);
+
+			const roleOrder = {
+			"团长": 0,
+			"副团长": 1,
+			"核心成员": 2,
+			"金主": 3,
+			"团员": 4
+			};
+
+			members.sort((a, b) => {
+			const sort = $("#sortSelect").value;
+
+			if (sort === "name") {
+			return a.name.localeCompare(b.name, "zh-CN");
+			}
+
+			if (sort === "role") {
+			return roleOrder[a.role] - roleOrder[b.role] ||
+			b.merit - a.merit;
+			}
+
+			return b.merit - a.merit;
+			});
+
+			$("#memberRows").innerHTML = members.map((member, index) => `
+			<tr>
+				<td>${String(index + 1).padStart(2, "0")}</td>
+				<td>${escapeHTML(member.name)}</td>
+				<td>
+					<span class="tag">${escapeHTML(member.role)}</span>
+				</td>
+				<td>${escapeHTML(member.season)}</td>
+				<td>${member.merit.toLocaleString("zh-CN")}</td>
+				<td class="muted">${escapeHTML(member.tag || "—")}</td>
+
+				${isAdmin ? `
+				<td>
+					<div class="row-actions">
+						<button
+						  data-action="edit"
+						  data-id="${escapeHTML(member.id)}"
+                >编辑</button>
+						<button
+						  class="danger"
+						  data-action="delete"
+						  data-id="${escapeHTML(member.id)}"
+                >删除</button>
+					</div>
+				</td>
+				` : ""}
+			</tr>
+			`).join("");
+
+			$("#emptyState").hidden = members.length > 0;
+
+			$("#rosterSummary").textContent =
+			`当前显示 ${members.length} 条记录 · ` +
+			`全部赛季共 ${data.members.length} 条记录 · 武勋仅作展示`;
+
+			syncControls();
+			}
+
+			function applyMusic() {
+			const url = data.config.musicUrl;
+
+			if ((audio.getAttribute("src") || "") !== url) {
+			audio.pause();
+
+			if (url) {
+			audio.src = url;
+			} else {
+			audio.removeAttribute("src");
+			}
+
+			audio.load();
+
+			$("#playButton").textContent = "▶";
+			$("#playButton").setAttribute("aria-label", "播放音乐");
+
+			$("#trackStatus").textContent = url
+			? "点击播放 · 单曲循环"
+			: "尚未设置音乐";
+			}
+
+			$("#trackTitle").textContent = url
+			? data.config.musicTitle || "背景音乐"
+			: "尚未设置背景音乐";
+
+			$("#playButton").disabled = !url;
+			}
+
+			function updatePublishBanner() {
+			setBanner(initialized
+			? ""
+			: "当前展示演示资料。管理员登录后保存设置，或导入备份，即可正式发布。"
+			);
+			}
+
+			async function loadSite() {
+			const { data: row, error } = await sb
+			.from("team_site")
+			.select("content, version, updated_at")
+			.eq("id", 1)
+			.single();
+
+			if (error) throw error;
+
+			initialized = Boolean(
+			row.content &&
+			typeof row.content === "object" &&
+			Object.keys(row.content).length
+			);
+
+			data = initialized
+			? validateData(row.content)
+			: clone(DEFAULTS);
+
+			siteVersion = row.version;
+			updatedAt = initialized ? row.updated_at : "";
+			ready = true;
+
+			filterSeason = data.config.season;
+			$("#siteMain").hidden = false;
+
+			render();
+			applyMusic();
+			updatePublishBanner();
+			}
+
+			async function saveSite(candidate) {
+			requireAdmin();
+
+			const clean = validateData(candidate);
+
+			// 仅当数据库版本与本页面读取到的版本一致时更新
+			const { data: rows, error } = await sb
+			.from("team_site")
+			.update({ content: clean })
+			.eq("id", 1)
+			.eq("version", siteVersion)
+			.select("version, updated_at");
+
+			if (error) throw error;
+
+			if (!rows || rows.length !== 1) {
+			throw new Error(
+			"未保存：资料可能已被其他管理员更新，或当前权限已失效。" +
+			"请在管理面板读取最新数据后重新编辑。"
+			);
+			}
+
+			data = clean;
+			siteVersion = rows[0].version;
+			updatedAt = rows[0].updated_at;
+			initialized = true;
+
+			render();
+			applyMusic();
+			updatePublishBanner();
+			}
+
+			async function refreshAuth() {
+			const generation = ++authGeneration;
+
+			const {
+			data: { user },
+			error: userError
+			} = await sb.auth.getUser();
+
+			if (generation !== authGeneration) return;
+
+			let nextAdmin = false;
+			let nextSession = Boolean(user && !userError);
+
+			if (nextSession) {
+			const { data: membership, error } = await sb
+			.from("site_admins")
+			.select("user_id")
+			.eq("user_id", user.id)
+			.maybeSingle();
+
+			if (generation !== authGeneration) return;
+
+			if (error) {
+			isAdmin = false;
+			hasSession = nextSession;
+			render();
+			throw error;
+			}
+
+			nextAdmin = Boolean(membership);
+			}
+
+			if (generation !== authGeneration) return;
+
+			isAdmin = nextAdmin;
+			hasSession = nextSession;
+
+			if (!isAdmin) {
+			$("#settingsDialog").close();
+			$("#memberDialog").close();
+			}
+
+			render();
+			}
+
+			function openSettings() {
+			if (busy) return;
+			requireAdmin();
+
+			$("#textFields").innerHTML = FIELDS.map(
+			([key, label, multiline]) => `
+			<label class="field">
+				<span>${escapeHTML(label)}</span>
+				${multiline ? `
+				<textarea
+				  name="${key}"
+				  maxlength="20000"
+              >${escapeHTML(data.config[key])}</textarea>
+				` : `
+				<input
+				  name="${key}"
+				  maxlength="20000"
+				  value="${escapeHTML(data.config[key])}"
+									  .includes=""(key="") ? "required" :="" ""}
+              >
+					`}
+				</label>
+			`
+			).join("");
+
+			const form = $("#settingsForm");
+
+			form.elements.musicTitle.value = data.config.musicTitle;
+			form.elements.musicUrl.value = data.config.musicUrl;
+			form.elements.musicFile.value = "";
+
+			$("#settingsDialog").showModal();
+			}
+
+			function openMember(id) {
+			if (busy) return;
+			requireAdmin();
+
+			const member = id
+			? data.members.find(item => item.id === id)
+			: null;
+
+			const form = $("#memberForm");
+			form.reset();
+
+			$("#memberDialogTitle").textContent =
+			member ? "编辑成员" : "添加成员";
+
+			const values = member || {
+			id: "",
+			name: "",
+			role: "团员",
+			season: filterSeason === "*"
+			? data.config.season
+			: filterSeason,
+			merit: 0,
+			tag: "",
+			note: "",
+			core: false
+			};
+
+			for (const [key, value] of Object.entries(values)) {
+			const element = form.elements.namedItem(key);
+			if (!element) continue;
+
+			if (key === "core") element.checked = value;
+			else element.value = value;
+			}
+
+			$("#memberDialog").showModal();
+			}
+
+			function exportBackup() {
+			const blob = new Blob([
+			JSON.stringify({
+			formatVersion: 1,
+			exportedAt: new Date().toISOString(),
+			...data
+			}, null, 2)
+			], {
+			type: "application/json"
+			});
+
+			const url = URL.createObjectURL(blob);
+			const anchor = document.createElement("a");
+
+			anchor.href = url;
+			anchor.download =
+			`战团备份-${new Date().toISOString().slice(0, 10)}.json`;
+
+			document.body.appendChild(anchor);
+			anchor.click();
+			anchor.remove();
+
+			setTimeout(() => URL.revokeObjectURL(url), 1000);
+			}
+
+			async function uploadMusic(file) {
+			const extension = file.name.split(".").pop().toLowerCase();
+
+			const mimeTypes = {
+			mp3: "audio/mpeg",
+			wav: "audio/wav",
+			ogg: "audio/ogg",
+			m4a: "audio/mp4"
+			};
+
+			if (!mimeTypes[extension]) {
+			throw new Error("请选择 MP3、WAV、OGG 或 M4A 文件");
+			}
+
+			if (!file.size || file.size > 20 * 1024 * 1024) {
+			throw new Error("音乐文件不能为空，且不能超过 20MB");
+			}
+
+			const path = `tracks/${uid()}.${extension}`;
+
+			const { error } = await sb.storage
+			.from("team-music")
+			.upload(path, file, {
+			contentType: mimeTypes[extension],
+			cacheControl: "3600",
+			upsert: false
+			});
+
+			if (error) throw error;
+
+			const { data: result } = sb.storage
+			.from("team-music")
+			.getPublicUrl(path);
+
+			return {
+			path,
+			url: result.publicUrl
+			};
+			}
+
+			$("#loginButton").addEventListener("click", () => {
+			if (!ready || busy) return;
+			$("#loginError").textContent = "";
+			$("#loginDialog").showModal();
+			});
+
+			$("#manageButton").addEventListener("click", () => {
+			try { openSettings(); }
+			catch (error) { toast(error.message); }
+			});
+
+			$("#musicSettings").addEventListener("click", () => {
+			try { openSettings(); }
+			catch (error) { toast(error.message); }
+			});
+
+			$("#addMemberButton").addEventListener("click", () => {
+			try { openMember(); }
+			catch (error) { toast(error.message); }
+			});
+
+			document.querySelectorAll("[data-close]").forEach(button => {
+			button.addEventListener("click", () => {
+			if (!busy) {
+			document.getElementById(button.dataset.close).close();
+			}
+			});
+			});
+
+			document.querySelectorAll("dialog").forEach(dialog => {
+			dialog.addEventListener("cancel", event => {
+			if (busy) event.preventDefault();
+			});
+			});
+
+			$("#loginForm").addEventListener("submit", event => {
+			event.preventDefault();
+
+			const form = event.currentTarget;
+			const values = new FormData(form);
+
+			runBusy(async () => {
+			$("#loginError").textContent = "";
+
+			try {
+			const { error } = await sb.auth.signInWithPassword({
+			email: String(values.get("email")).trim(),
+			password: String(values.get("password"))
+			});
+
+			if (error) throw error;
+
+			await refreshAuth();
+
+			if (!isAdmin) {
+			throw new Error("该账号没有网站管理权限");
+			}
+
+			form.reset();
+			$("#loginDialog").close();
+			toast("管理员登录成功");
+			} catch (error) {
+			$("#loginError").textContent =
+			error.message || "登录失败，请重试";
+			}
+			});
+			});
+
+			$("#logoutButton").addEventListener("click", () => {
+			runBusy(async () => {
+			const { error } = await sb.auth.signOut();
+			if (error) throw error;
+
+			await refreshAuth();
+			toast("已退出登录");
+			});
+			});
+
+			$("#searchInput").addEventListener("input", renderMembers);
+			$("#sortSelect").addEventListener("change", renderMembers);
+
+			$("#seasonFilter").addEventListener("change", event => {
+			filterSeason = event.target.value;
+			renderMembers();
+			});
+
+			$("#memberForm").addEventListener("submit", event => {
+			event.preventDefault();
+
+			const form = event.currentTarget;
+			const values = new FormData(form);
+
+			const member = {
+			id: String(values.get("id") || uid()),
+			name: String(values.get("name")).trim(),
+			role: String(values.get("role")),
+			season: String(values.get("season")).trim(),
+			merit: Number(values.get("merit")),
+			tag: String(values.get("tag")).trim(),
+			note: String(values.get("note")).trim(),
+			core: form.elements.core.checked
+			};
+
+			runBusy(async () => {
+			requireAdmin();
+
+			const candidate = clone(data);
+			const index = candidate.members.findIndex(
+			item => item.id === member.id
+			);
+
+			if (index < 0) candidate.members.push(member);
+        else candidate.members[index] = member;
+
+        await saveSite(candidate);
+
+        filterSeason = member.season;
+        $("#searchInput").value = "";
+        render();
+
+        $("#memberDialog").close();
+        toast("成员已保存并发布");
+      });
+    });
+
+    $("#memberRows").addEventListener("click", event => {
+      const button = event.target.closest("button[data-action]");
+
+      if (!button || busy || !isAdmin) return;
+
+      const member = data.members.find(
+        item => item.id === button.dataset.id
+      );
+
+      if (!member) return;
+
+      if (button.dataset.action === "edit") {
+        openMember(member.id);
+        return;
+      }
+
+      if (!confirm(
+        `确定删除“${member.name}”在 ${member.season} 的记录吗？`
+      )) return;
+
+      runBusy(async () => {
+        const candidate = clone(data);
+
+        candidate.members = candidate.members.filter(
+          item => item.id !== member.id
+        );
+
+        await saveSite(candidate);
+        toast("成员已删除");
+      });
+    });
+
+    $("#settingsForm").addEventListener("submit", event => {
+      event.preventDefault();
+
+      const form = event.currentTarget;
+      const values = new FormData(form);
+      const candidate = clone(data);
+
+      FIELDS.forEach(([key]) => {
+        candidate.config[key] = String(values.get(key)).trim();
+      });
+
+      candidate.config.musicTitle =
+        String(values.get("musicTitle")).trim();
+
+      candidate.config.musicUrl =
+        String(values.get("musicUrl")).trim();
+
+      const file = form.elements.musicFile.files[0];
+
+      runBusy(async () => {
+        requireAdmin();
+
+        let uploadedPath = "";
+
+        try {
+          // 先检查文字和成员数据，避免无效资料导致无用上传
+          // 选择了文件时，新上传地址会替代旧直链
+          if (file) candidate.config.musicUrl = "";
+
+          validateData(candidate);
+
+          if (file) {
+            toast("正在上传音乐，请稍候……");
+
+            const uploaded = await uploadMusic(file);
+            uploadedPath = uploaded.path;
+
+            candidate.config.musicUrl = uploaded.url;
+
+            if (!candidate.config.musicTitle) {
+              candidate.config.musicTitle =
+                file.name.replace(/\.[^.]+$/, "");
+            }
+          }
+
+          await saveSite(candidate);
+          $("#settingsDialog").close();
+          toast("网站已保存并发布");
+        } catch (error) {
+          // 不立即删除新文件：
+          // 网络超时时，数据库可能已成功提交，需避免误删正在引用的音乐。
+          if (uploadedPath) {
+            toast("音乐已上传，但发布结果未确认，请读取最新数据检查。");
+          }
+
+          throw error;
+        }
+      });
+    });
+
+    $("#exportButton").addEventListener("click", () => {
+      if (!isAdmin || busy) return;
+      exportBackup();
+      toast("备份已导出");
+    });
+
+    $("#importButton").addEventListener("click", () => {
+      if (!isAdmin || busy) return;
+      $("#importFile").click();
+    });
+
+    $("#importFile").addEventListener("change", event => {
+      const input = event.currentTarget;
+      const file = input.files[0];
+
+      if (!file) return;
+
+      runBusy(async () => {
+        try {
+          requireAdmin();
+
+          if (file.size > 8 * 1024 * 1024) {
+            throw new Error("备份文件不能超过 8MB");
+          }
+
+          const candidate = validateData(
+            JSON.parse(await file.text())
+          );
+
+          if (!confirm(
+            `导入将替换全部文案和成员资料，` +
+            `共 ${candidate.members.length} 条成员记录。确定发布吗？`
+          )) return;
+
+          await saveSite(candidate);
+
+          filterSeason = data.config.season;
+          $("#searchInput").value = "";
+          render();
+
+          $("#settingsDialog").close();
+          toast("备份已导入并发布");
+        } catch (error) {
+          if (error instanceof SyntaxError) {
+            throw new Error("文件不是有效的 JSON 备份");
+          }
+
+          throw error;
+        } finally {
+          input.value = "";
+        }
+      });
+    });
+
+    $("#reloadButton").addEventListener("click", () => {
+      if (!confirm("重新读取数据库资料，放弃当前未提交的编辑？")) {
+        return;
+      }
+
+      runBusy(async () => {
+        requireAdmin();
+
+        await loadSite();
+
+        $("#settingsDialog").close();
+        $("#memberDialog").close();
+
+        toast("已读取最新数据");
+      });
+    });
+
+    $("#playButton").addEventListener("click", async () => {
+      if (!audio.getAttribute("src")) return;
+
+      if (!audio.paused) {
+        audio.pause();
+        return;
+      }
+
+      try {
+        await audio.play();
+      } catch {
+        toast("无法播放，请检查音乐地址或文件格式");
+      }
+    });
+
+    $("#volume").addEventListener("input", event => {
+      audio.volume = Number(event.target.value);
+    });
+
+    audio.addEventListener("play", () => {
+      $("#playButton").textContent = "Ⅱ";
+      $("#playButton").setAttribute("aria-label", "暂停音乐");
+      $("#trackStatus").textContent = "正在播放 · 单曲循环";
+    });
+
+    audio.addEventListener("pause", () => {
+      $("#playButton").textContent = "▶";
+      $("#playButton").setAttribute("aria-label", "播放音乐");
+      $("#trackStatus").textContent = audio.getAttribute("src")
+        ? "已暂停 · 点击继续"
+        : "尚未设置音乐";
+    });
+
+    audio.addEventListener("error", () => {
+      $("#trackStatus").textContent =
+        "音频载入失败，请联系管理员更换音乐";
+    });
+
+    async function boot() {
+      try {
+        const config = window.TEAM_CONFIG;
+
+        if (
+          !config ||
+          !config.supabaseUrl ||
+          !config.supabasePublishableKey ||
+          config.supabaseUrl.includes("填写") ||
+          config.supabasePublishableKey.includes("填写")
+        ) {
+          throw new Error("请先在 config.js 中填写 Supabase 项目 URL 和公开密钥。");
+        }
+
+        if (
+          config.supabasePublishableKey.startsWith("sb_secret_")
+        ) {
+          throw new Error("不能使用 secret key，请改用 publishable key。");
+        }
+
+        if (!window.supabase) {
+          throw new Error("Supabase SDK 载入失败，请检查网络后刷新。");
+        }
+
+        sb = window.supabase.createClient(
+          config.supabaseUrl,
+          config.supabasePublishableKey
+        );
+
+        await loadSite();
+        await refreshAuth();
+
+        sb.auth.onAuthStateChange(() => {
+          // 在认证回调之外查询管理员权限
+          setTimeout(() => {
+            refreshAuth().catch(error => {
+              console.error(error);
+              toast("登录状态读取失败，请刷新重试");
+            });
+          }, 0);
+        });
+      } catch (error) {
+        console.error(error);
+
+        setBanner(
+          "网站加载失败：\n" +
+          (error.message || "未知错误") +
+          "\n请检查 config.js、数据库 SQL 和网络连接后刷新。"
+        );
+
+        syncControls();
+      }
+    }
+
+    boot();
+		</script>
+	</body>
+</html>
